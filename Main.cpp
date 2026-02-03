@@ -17,11 +17,25 @@
 #include "imgui_impl_opengl3.h"
 #include <string>
 #include <vector>
+#include "ThirdParty/json.hpp"
+#include <fstream>
 
 using namespace std;
 using namespace Strips;
+using json = nlohmann::json;
 
 int SDL_main(int, char**) {
+
+    std::ifstream file("package.json");
+
+    if (!file) {
+        std::cerr << "Failed to open JSON file\n";
+        return 1;
+    }
+    json data;
+    file >> data;
+    cout << data["version"] << endl;;
+
     AppCore coreTest = AppCore();
     Strips::Strip testStrip = Strip(StripType::ENROUTE, "AALTest", "KORD", "KORD", "24523");
     Strips::Strip testStrip2 = Strip(StripType::ENROUTE, "AA423", "KgORD", "KOfadsRD", "24dfs523");

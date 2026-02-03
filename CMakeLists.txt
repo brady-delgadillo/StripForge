@@ -15,6 +15,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/ThirdParty/imgui
     ${CMAKE_SOURCE_DIR}/ThirdParty/imgui/backends
     ${CMAKE_SOURCE_DIR}/ThirdParty/gl3w/include
+    ${CMAKE_SOURCE_DIR}/ThirdParty/
 )
 
 # -----------------------------
@@ -27,6 +28,12 @@ file(GLOB_RECURSE IMGUI_SOURCES
     ThirdParty/imgui/backends/imgui_impl_opengl3.cpp
 )
 file(GLOB_RECURSE GL3W_SOURCES ThirdParty/gl3w/src/gl3w.c)
+
+configure_file(
+    ${CMAKE_SOURCE_DIR}/package.json
+    ${CMAKE_BINARY_DIR}/package.json
+    COPYONLY
+)
 
 set(SOURCES
     Main.cpp
