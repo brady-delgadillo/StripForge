@@ -1,5 +1,7 @@
 #include "./headers/Utils.h"
 
+int Utils::currentID = 0;
+
 std::string Utils::parseAltitudes(std::string alt)
 {
 	double inputedNum = 0;
@@ -32,4 +34,9 @@ double Utils::roundToDecimal(double value, int decimalPlaces) {
 	const double multiplier = std::pow(10.0, decimalPlaces);
 	// Multiply by 10^n, round to nearest integer, then divide by 10^n
 	return std::round(value * multiplier) / multiplier;
+}
+
+int Utils::randomID()
+{
+	return currentID += 1;
 }

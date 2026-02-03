@@ -30,6 +30,27 @@ bool AppCore::isRendering()
 	return runningFlags.test(0);
 }
 
+void AppCore::setPage(int page)
+{
+	if (page > MAX_PAGES) {
+		std::cerr << "Out of bounds, " << page << ">8" << std::endl;
+		std::cerr << "Will keep current page to " << getCurrentPage() << std::endl;
+		return;
+	}
+	else if (page < 0) {
+		std::cerr << "Out of bounds, " << page << "<0" << std::endl;
+		std::cerr << "Will keep current page to " << getCurrentPage() << std::endl;
+		return;
+	}
+
+	currentPageRender = page;
+}
+
+int AppCore::getCurrentPage()
+{
+	return currentPageRender;
+}
+
 void AppCore::addCommand(std::unique_ptr<Command> c)
 {
 	commandsList.push_back(std::move(c));

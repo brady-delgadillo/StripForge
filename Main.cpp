@@ -23,17 +23,15 @@ using namespace Strips;
 
 int SDL_main(int, char**) {
     AppCore coreTest = AppCore();
+    Strips::Strip testStrip = Strip(StripType::ENROUTE, "AALTest", "KORD", "KORD", "24523");
+    Strips::Strip testStrip2 = Strip(StripType::ENROUTE, "AA423", "KgORD", "KOfadsRD", "24dfs523");
 
     coreTest.addCommand(std::make_unique<AddCommand>());
+    cout << coreTest.getCurrentPage() << endl;
 
-    cout << coreTest.isRendering() << endl;
-    cout << coreTest.isRunning() << endl;
-
-    coreTest.setRendering(1);
-    coreTest.setRunning(0);
-
-    cout << coreTest.isRendering() << endl;
-    cout << coreTest.isRunning() << endl;
+    coreTest.getStrips().addStrip(testStrip);
+    coreTest.getStrips().addStrip(testStrip2);
+    cout << coreTest.getStrips().getStripPos(testStrip2) << endl;
 
     // ------------------------------
     // SDL + OpenGL setup
@@ -77,9 +75,6 @@ int SDL_main(int, char**) {
     // Main loop
     bool running = true;
     bool render_ui = true;
-
-    cout << sizeof(running) << endl;
-    cout << sizeof(render_ui) << endl;
 
     while (running) {
         SDL_Event event;
