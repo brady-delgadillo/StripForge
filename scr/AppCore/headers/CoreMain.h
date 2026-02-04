@@ -7,28 +7,8 @@
 #include "../commands/command.h"
 #include "Strip.h"
 
-//Univeral Constants, never changes
-#define MAX_PAGES 8
-
-
-struct MasterStripHolder {
-	std::vector<Strips::Strip> allStrips;
-
-	//Int 1: Rail ID | Int 2: Page Number
-	std::map<int, int> railHolderData;
-
-public:
-	void addStrip(Strips::Strip strip) { allStrips.push_back(strip); }
-	void removeStrip(int pos) { allStrips.erase(allStrips.begin() + pos); }
-	int getStripPos(Strips::Strip& strip) {
-		int index = 0;
-		for (Strips::Strip& strips : allStrips) {
-			if (strip.equals(strips)) { return index; }
-			index++;
-		}
-		return -1;
-	}
-};
+#include "CoreStrips.h"
+#include "CoreRenderer.h"
 
 class AppCore {
 protected:
@@ -41,7 +21,8 @@ protected:
 	int currentPageRender = 0;
 
 	//Strip Header
-	MasterStripHolder strips = MasterStripHolder();
+	CoreStrips strips = CoreStrips();
+	CoreRenderer renderer = CoreRenderer();
 public:
 	//Running Flags Setters
 	void setRunning(bool setTo);
@@ -60,5 +41,6 @@ public:
 	Command* findCommand(std::string inputedCommand);
 
 	//StripGetting
-	MasterStripHolder& getStrips() { return strips; }
+	CoreStrips& getStrips() { return strips; }
+	CoreRenderer& getRenderer() { return renderer; }
 };

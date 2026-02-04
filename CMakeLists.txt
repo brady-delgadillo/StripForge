@@ -10,6 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/scr/headers
+    ${CMAKE_SOURCE_DIR}/scr/AppCore/headers
     ${CMAKE_SOURCE_DIR}/scr/commands
     ${CMAKE_SOURCE_DIR}/ThirdParty/SDL2/include
     ${CMAKE_SOURCE_DIR}/ThirdParty/imgui

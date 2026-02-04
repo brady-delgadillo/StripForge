@@ -1,4 +1,4 @@
-#include "./headers/Core.h"
+#include "./headers/CoreMain.h"
 
 void AppCore::setRunning(bool setTo)
 {
