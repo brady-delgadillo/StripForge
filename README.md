@@ -1,5 +1,8 @@
 # StripsForge
 
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbrady-delgadillo%2FStripForge%2Frefs%2Fheads%2Fmaster%2Fpackage.json&query=%24.version&label=Version&labelColor=blue&color=grey)
+
+
 A strip rendering software for virtual ATC controllers
 
 
